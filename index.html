@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>線上抽獎系統 by BaconBao</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="BaconBao">
+    <meta name="description" content="點擊幾下就可以規劃獎項與名額，輕鬆快速的完成線上抽獎！">
+    <meta property="og:image" content="ogimage.jpg"/>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.6.min.css">
+    <link rel="stylesheet" href="lib/style.css">
+    <script src="lib/jquery-1.11.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage["candidates"] !== undefined) {
+                    $('textarea[name=candidates]').val(sessionStorage["candidates"]);
+                }
+            }
+
+            // $('#restart').click(function () {
+            //     document.location.reload();
+            // });
+
+            $('#continue').click(function () {
+
+                winner.forEach(function (player) {
+
+                    // console.log(candidates.indexOf(player));
+
+                    if (candidates.indexOf(player) < 0) {
+                        console.log(player);
+                        return;
+                    }
+
+                    console.log(player);
+
+                });
+
+                candidates.forEach(function (value) {
+                    // console.log(candidates.indexOf(value));
+                    // candidates.splice(candidates.indexOf(value), 1);
+                });
+
+                // console.log(candidates.length);
+
+            });
+
+            let temp_total_count = 0;
+            let candidates = [];
+            let price_count = 0;
+            let volume = [];
+            let winner = [];
+
+            $('#letsgo').click(function () {
+
+                if (typeof (Storage) !== "undefined") {
+                    sessionStorage.setItem('candidates', $('textarea[name=candidates]').val());
+                }
+                re_init();
+
+                let tmpCount = $('#counter').val();
+                volume.push(tmpCount);
+                price_count = 1;
+
+                showArray('[price_volume] ', volume);
+
+                /*--- GET All Candidates ---*/
+                candidates = [];
+                let ps = $.trim($('textarea[name=candidates]').val()).replace(/,/g, '\n').split('\n');
+                for (let i = 0; i < ps.length; i++) {
+                    let p = $.trim(ps[i]);
+                    if (p.length == 0) {
+                        continue;
+                    }
+                    candidates.push(p);
+                }
+
+                showArray('[init] ', candidates);
+
+                $('#candidates_count').text('本次共 ' + candidates.length + ' 位抽獎者');
+
+                /*--- Candidates' Data check ---*/
+                if (candidates.length < temp_total_count) {
+                    alert('名單少於獎項名額。');
+                    console.log('--------------ENDING--------------');
+                    return false;
+                }
+
+                /*--- Main work ---*/
+                for (let j = 0; j < price_count; j++) {
+                    /*--- shuffle ---*/
+                    shuffle(candidates);
+                    showArray('[after_shuffle] ', candidates);
+                    /*--- get winner ---*/
+                    winner[j] = candidates.splice(0, volume[j]);
+                    showArray('[winner-' + (j + 1) + ']', winner[j]);
+                    console.log('///Price' + (j + 1) + ' Done///');
+                    showArray('[remaining] ', candidates);
+                    /*--- remove the same winner ---*/
+                    for (var k = 0; k < winner[j].length; k++) {
+                        var removeItem = winner[j][k];
+                        candidates = jQuery.grep(candidates, function (value) {
+                            return value != removeItem;
+                        });
+                    }
+                    showArray('[after_remove_same] ', candidates);
+                }
+
+                /*--- Print the Winners ---*/
+                for (var k = 0; k < winner.length; k++) {
+                    $('#results').append('<span class="pn">獎項 #' + (k + 1) + '</span>');
+                    for (var m = 0; m < winner[k].length; m++) {
+                        $('#results').append('<span class="pnw">' + winner[k][m] + '</span>');
+                    }
+                    if (winner[k].length === 0) {
+                        $('#results').append('<span class="pnw">--Empty--</span>');
+                    }
+                }
+
+                $('#content').fadeOut();
+
+                $('#footer').fadeOut(function () {
+                    $('#results').fadeIn()
+                });
+            });
+
+            function showArray(quote, ary) {
+                var str = '';
+                for (let i = 0; i < ary.length; i++) {
+                    str += ary[i] + ',';
+                }
+                console.log(quote + str);
+            }
+
+            function shuffle(array) {
+                var currentIndex = array.length, temporaryValue, randomIndex;
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+                return array;
+            }
+
+            function re_init() {
+                temp_total_count = 0;
+                candidates = [];
+                price_count = 0;
+                volume = [];
+                winner = [];
+            }
+
+        });
+    </script>
+</head>
+<body>
+
+<div id="box">
+    <div id="top">線上抽獎系統</div>
+    <div id="content">
+        <div class="left">
+				<textarea name="candidates" class="form-control" rows="12">Steve Jobs
+Mark Zuckerberg
+Larry Page
+Sergey Brin
+Lei Jun
+Robin Li
+Jack Ma
+Terry Gou
+Morris Chang
+Stan Shih</textarea>
+        </div>
+        <div class="right">
+            <div id="price_list">
+                <label for="counter">抽出
+                    <input type="text" class="count" id="counter" value="2"/>
+                </label>
+            </div>
+            <button id="letsgo" class="btn btn-success">開始抽獎！</button>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <div id="results" style="display: none;">
+        <span id="candidates_count">123</span>
+        <button id="restart" class="btn btn-success">重新開始</button>
+        <button id="continue" class="btn btn-success">剩下的繼續抽籤</button>
+        <div id="congrats">恭喜以下得獎者！</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+body {
+    padding: 15px;
+    padding-top: 50px;
+    font-family: 'Segoe UI', Helvetica, Arial, 'Microsoft YaHei', FreeSans, Arimo, 'Droid Sans', 'wenquanyi micro hei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', Arial, sans-serif;
+}
+
+textarea.form-control {
+    border-radius: 0px;
+}
+
+#copyright {
+    padding-top: 5px;
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#box {
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+}
+
+#top {
+    background: #4285f4;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#content .left {
+    display: inline-block;
+    width: 55%;
+    vertical-align: top;
+    padding: 3px;
+}
+
+#content .right {
+    display: inline-block;
+    width: 44%;
+    vertical-align: top;
+    padding: 3px;
+}
+
+#footer {
+    background: #eee;
+    border-top: 1px solid #ddd;
+    padding: 10px 15px;
+    color: #777;
+}
+
+#footer a {
+    color: #777;
+}
+
+#add_price {
+    font-weight: bold;
+    font-size: 30px;
+    float: right;
+    margin-top: -25px;
+}
+
+#letsgo {
+    width: 99.99%;
+    margin-top: 3px;
+    border-radius: 0px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#results {
+    padding: 15px;
+}
+
+#congrats {
+    text-align: center;
+    color: #FF5722;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#restart {
+    float: right;
+    font-weight: bold;
+}
+
+#continue {
+    float: right;
+    font-weight: bold;
+}
+
+#candidates_count {
+    float: left;
+}
+
+.btn-circle {
+    width: 49px;
+    height: 49px;
+    text-align: center;
+    padding: 0px 0;
+    font-size: 20px;
+    line-height: 0.00;
+    border-radius: 30px;
+    vertical-align: top;
+    border-top: 0px;
+}
+
+.priceNumber {
+    display: inline-block;
+    background: #FF5722;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 5px 10px 5px;
+    color: #fff;
+    margin-right: 50px;
+}
+
+.priceBox {
+    background: #ffc107;
+    margin-top: 3px;
+    border: 1px solid #eee;
+}
+
+.priceBox .count {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pn {
+    display: block;
+    background: #ff8013;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 5px 10px 5px;
+    color: #fff;
+    margin: 8px 0px 5px;
+}
+
+.pnw {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 1px 0px 0px 15px;
+    color: #000;
+}
