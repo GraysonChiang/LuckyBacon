@@ -1,11 +1,11 @@
 body {
     padding: 15px;
-    padding-top: 50px;
     font-family: 'Segoe UI', Helvetica, Arial, 'Microsoft YaHei', FreeSans, Arimo, 'Droid Sans', 'wenquanyi micro hei', 'Hiragino Sans GB', 'Hiragino Sans GB W3', Arial, sans-serif;
+    background-color: #303030;
 }
 
 textarea.form-control {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 #copyright {
@@ -21,9 +21,9 @@ textarea.form-control {
     border: 1px solid #bbb;
 }
 
-#top {
-    background: #4285f4;
-    color: #fff;
+.top {
+    background: #f3e023;
+    color: #303030;
     font-size: 30px;
     font-weight: bold;
     padding: 10px;
@@ -134,13 +134,13 @@ textarea.form-control {
     font-weight: bold;
     padding: 5px 5px 10px 5px;
     color: #fff;
-    margin: 8px 0px 5px;
+    margin: 8px 0 5px;
 }
 
 .pnw {
     display: block;
     font-size: 18px;
     font-weight: 500;
-    padding: 1px 0px 0px 15px;
+    padding: 1px 0 0 15px;
     color: #000;
 }
