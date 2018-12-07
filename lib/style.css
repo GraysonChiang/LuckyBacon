@@ -1,15 +1,30 @@
-*{
-    font-family: 微軟正黑體;
+* {
+    font-family: '微軟正黑體';
 }
 
-html{
+
+body {
+    /*background-color: #3D3D3B;*/
+    text-align: center;
+}
+
+svg {
+    max-width: 90vh;
+    position: fixed;
+}
+
+.snowflake {
+    fill: #F4F4F4;
+}
+
+html {
     background-image: url(bg.jpg);
     background-repeat: repeat-x;
     background-position: left bottom;
     background-attachment: fixed;
 }
 
-.title{
+.title {
     margin-top: 80px;
     margin-bottom: 40px;
 }
@@ -38,16 +53,16 @@ html{
     justify-content: center;
     -o-box-align: center;
     align-items: center;
-    font: 16px/1.5 微軟正黑體,"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 16px/1.5 微軟正黑體, "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #ffffff;
-    font-size: 36px;    
+    font-size: 36px;
 }
 
-.name_list{
-    margin: 0px auto;
+.name_list {
+    margin: 0 auto;
 }
 
-.re-box{
+.re-box {
     margin-top: 80px;
 }

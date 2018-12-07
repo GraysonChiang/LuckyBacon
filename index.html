@@ -6,6 +6,55 @@
     <link rel="stylesheet" href="lib/bootstrap-4.1.3-dark.min.css">
     <link rel="stylesheet" href="lib/style.css">
     <script src="lib/jquery-1.11.3.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>-->
+
+    <!--<script>-->
+        <!--$(document).ready(function () {-->
+            <!--new Vue({-->
+                <!--el: '#app',-->
+                <!--data: {-->
+                    <!--snowflakes: [],-->
+                <!--},-->
+                <!--methods: {-->
+                    <!--remove() {-->
+                        <!--this.snowflakes = this.snowflakes.filter(snowflake => !(-->
+                            <!--snowflake.cy > 500 ||-->
+                            <!--(snowflake.cx < 0 && snowflake.xSpeed < 0) ||-->
+                            <!--(snowflake.cx > 500 && snowflake.xSpeed > 0)-->
+                        <!--));-->
+                    <!--},-->
+                    <!--add() {-->
+                        <!--while (this.snowflakes.length < 250) {-->
+                            <!--this.snowflakes.push({-->
+                                <!--cx: _.random(-250.0, 750.0),-->
+                                <!--cy: _.random(-500.0, 0.0),-->
+                                <!--r: _.random(0.1, 1.5),-->
+                                <!--xSpeed: _.random(-0.5, 0.5),-->
+                                <!--ySpeed: _.random(0.5, 1.5),-->
+                            <!--});-->
+                        <!--}-->
+                    <!--},-->
+                    <!--move() {-->
+                        <!--this.snowflakes.map((snowflake) => {-->
+                            <!--snowflake.cy += snowflake.ySpeed;-->
+                            <!--snowflake.cx += snowflake.xSpeed;-->
+                        <!--});-->
+                    <!--},-->
+                    <!--step() {-->
+                        <!--this.remove();-->
+                        <!--this.add();-->
+                        <!--this.move();-->
+                        <!--requestAnimationFrame(this.step);-->
+                    <!--}-->
+                <!--},-->
+                <!--mounted() {-->
+                    <!--requestAnimationFrame(this.step);-->
+                <!--},-->
+            <!--});-->
+        <!--});-->
+
+    <!--</script>-->
     <script>
         $(document).ready(function () {
             let candidates = [];
@@ -100,10 +149,19 @@
 </head>
 
 <body>
+<!--<svg id="app" viewBox="0 0 500 500">-->
+    <!--<circle v-for="snowflake in snowflakes"-->
+            <!--class="snowflake"-->
+            <!--:cx="snowflake.cx"-->
+            <!--:cy="snowflake.cy"-->
+            <!--:r="snowflake.r"/>-->
+<!--</svg>-->
 <div class="container title">
     <div class="row">
         <div class="col">
-            <h1 class="display-3" style="text-align: center;color: #F7D354;font-weight: bold">臺北大學商學院聖誕節抽獎活動</h1>
+            <h3 class="display-5" style="text-align: center;color: #F7D354;font-weight: bold">臺北大學商學院</h3>
+            <h1 class="display-3" style="text-align: center;color: #F7D354;font-weight: bold">聖誕奇蹟亮晶晶</h1>
+
         </div>
     </div>
 </div>
@@ -150,5 +208,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
