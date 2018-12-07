@@ -1,3 +1,12 @@
+*{
+    font-family: 微軟正黑體;
+}
+
+.title{
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
 .card {
     width: 25%;
     height: 60px;
@@ -22,8 +31,16 @@
     justify-content: center;
     -o-box-align: center;
     align-items: center;
-    font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font: 16px/1.5 微軟正黑體,"Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #ffffff;
     font-size: 36px;
+}
+
+.name_list{
+    margin: 0 auto;
+}
+
+.re-box{
+    margin-top: 80px;
 }

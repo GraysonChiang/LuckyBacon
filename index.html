@@ -49,7 +49,9 @@
 
                 console.log('init : ' + candidates.toString());
 
-                $('#candidates_count').text('本次共 ' + candidates.length + ' 位抽獎者');
+                let rate = (tmpCount / candidates.length * 100).toFixed(2);
+
+                $('#candidates_count').text('本次共 ' + candidates.length + ' 位抽獎者 ，' + '抽出 ' + tmpCount + ' 位，' + '中奬率 ' + rate + ' % ');
 
                 if (candidates.length < tmpCount) {
                     alert('名單少於獎項名額。');
@@ -77,7 +79,8 @@
             });
 
             function shuffle(array) {
-                let currentIndex = array.length, temporaryValue, randomIndex;
+                let currentIndex = array.length,
+                    temporaryValue, randomIndex;
                 while (0 !== currentIndex) {
                     randomIndex = Math.floor(Math.random() * currentIndex);
                     currentIndex -= 1;
@@ -95,8 +98,9 @@
         });
     </script>
 </head>
+
 <body>
-<div class="container">
+<div class="container title">
     <div class="row">
         <div class="col">
             <h1 class="display-3" style="text-align: center">臺北大學商學院聖誕節抽獎活動</h1>
@@ -121,28 +125,28 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12" id="results" style="display: none;">
-            <div class="col">
-                <button id="restart" type="button" class="btn btn-warning">重新開始</button>
-                <button id="continue" class="btn btn-success">剩下的繼續抽籤</button>
-            </div>
+
             <div class="col">
                 <h2 id="candidates_count"></h2>
                 <h1>得獎名單：</h1>
             </div>
-            <div class="row name_list">
+            <div class="col">
+                <div class="row name_list"></div>
             </div>
-
+            <div class="col re-box">
+                <button id="restart" type="button" class="btn btn-warning">重新開始</button>
+                <button id="continue" class="btn btn-success">剩下的繼續抽籤</button>
+            </div>
             <div id="footer" class="col"></div>
         </div>
     </div>
 </div>
 
-
-<div class="container" style="padding-top: 100px;">
+<div class="container" style="padding-top: 80px;padding-bottom: 20px;">
     <div class="row">
-        <div class="col">
-            <span>The tool made by <a href="https://github.com/GraysonChiang" target="_blank">Grayson Chiang</a>. Source code on <a
-                    href="https://github.com/GraysonChiang/LuckyBacon" target="_blank">GitHub</a></span>
+        <div class="col" style="text-align: center;">
+                <span>The tool made by <a href="https://github.com/GraysonChiang" target="_blank">Grayson Chiang</a>. Source code on <a
+                        href="https://github.com/GraysonChiang/LuckyBacon" target="_blank">GitHub</a></span>
         </div>
     </div>
 </div>
