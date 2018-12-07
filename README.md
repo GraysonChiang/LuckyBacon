@@ -1,4 +1,4 @@
-# 聖誕結活動抽獎小程式
+# 聖誕節活動抽獎小程式
 
 * 網址： [https://graysonchiang.github.io/ntpu/](https://graysonchiang.github.io/ntpu/)
 
