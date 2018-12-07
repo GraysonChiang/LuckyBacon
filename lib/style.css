@@ -9,8 +9,10 @@ body {
 }
 
 svg {
-    max-width: 90vh;
-    position: fixed;
+    max-width: 1920px;
+    max-height: 830px;
+    position: absolute;
+    left: 0;
 }
 
 .snowflake {
