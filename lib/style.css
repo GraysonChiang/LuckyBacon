@@ -2,6 +2,13 @@
     font-family: 微軟正黑體;
 }
 
+html{
+    background-image: url(bg.jpg);
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-attachment: fixed;
+}
+
 .title{
     margin-top: 80px;
     margin-bottom: 40px;
@@ -24,7 +31,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 6px;
-    background: #c09b26;
+    background: #07A89F;
     display: -ms-flexbox;
     display: flex;
     -o-box-pack: center;
@@ -34,11 +41,11 @@
     font: 16px/1.5 微軟正黑體,"Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     color: #ffffff;
-    font-size: 36px;
+    font-size: 36px;    
 }
 
 .name_list{
-    margin: 0 auto;
+    margin: 0px auto;
 }
 
 .re-box{
