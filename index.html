@@ -8,7 +8,7 @@
     <script src="lib/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.31.1/sweetalert2.all.js"></script>
     <script>
         $(document).ready(function () {
             new Vue({
@@ -59,8 +59,8 @@
         $(document).ready(function () {
             let candidates = [];
             let winners = [];
-
             let tempCounter = [];
+
             if (typeof (Storage) !== "undefined") {
                 if (sessionStorage["candidates"] !== undefined) {
                     $('#candidates').val(sessionStorage["candidates"]);
@@ -113,6 +113,16 @@
 
                 let tmpCount = $('#counter').val();
 
+                if (tmpCount == '' || tmpCount == '0') {
+                    Swal({
+                        title: 'Error!',
+                        text: '請輸入正確的數字',
+                        type: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    return false;
+                }
+
                 candidates = [];
 
                 $.trim($('#candidates').val())
@@ -130,12 +140,17 @@
                 let rate = (tmpCount / candidates.length * 100).toFixed(2);
 
                 $('#candidates_count')
-                    .html('共 <b style="color: #F7D354;">' + candidates.length + '</b> 位抽獎者 ，' +
+                    .html('共 <b style="color: #F7D354;">' + candidates.length + '</b> 位抽獎者，' +
                         '抽出 <b style="color: #F7D354;">' + tmpCount + ' </b>位，' +
-                        '中奬率 <b style="color: #F7D354;">' + rate + ' %</b> ');
+                        '中奬率 <b style="color: #F7D354;">' + rate + '%</b> ');
 
                 if (candidates.length < tmpCount) {
-                    alert('名單少於獎項名額。');
+                    Swal({
+                        title: 'Error!',
+                        text: '名單少於獎項名額',
+                        type: 'error',
+                        confirmButtonText: 'OK'
+                    });
                     return false;
                 }
 
