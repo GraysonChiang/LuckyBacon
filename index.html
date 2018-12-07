@@ -53,18 +53,47 @@
                 },
             });
         });
-
     </script>
+
     <script>
         $(document).ready(function () {
             let candidates = [];
             let winners = [];
 
+            let tempCounter = [];
             if (typeof (Storage) !== "undefined") {
                 if (sessionStorage["candidates"] !== undefined) {
                     $('#candidates').val(sessionStorage["candidates"]);
                 }
+
+                tempCounter = [];
+                $.trim($('#candidates').val())
+                    .replace(/,/g, '\n')
+                    .split('\n')
+                    .forEach(function (i) {
+                        if (i.length === 0) {
+                            return this;
+                        }
+                        tempCounter.push(i);
+                    });
+
+                $('#people').html('本次抽奬共 <b style="color: #F7D354;">' + tempCounter.length + ' </b>人');
             }
+
+            $('#candidates').on('paste change', function () {
+                let tempCounter = [];
+                $.trim($('#candidates').val())
+                    .replace(/,/g, '\n')
+                    .split('\n')
+                    .forEach(function (i) {
+                        if (i.length === 0) {
+                            return this;
+                        }
+                        tempCounter.push(i);
+                    });
+
+                $('#people').html('本次抽奬共 <b style="color: #F7D354;">' + tempCounter.length + ' </b>人');
+            });
 
             $('#restart').on('click', function () {
                 document.location.reload();
@@ -100,7 +129,10 @@
 
                 let rate = (tmpCount / candidates.length * 100).toFixed(2);
 
-                $('#candidates_count').text('本次共 ' + candidates.length + ' 位抽獎者 ，' + '抽出 ' + tmpCount + ' 位，' + '中奬率 ' + rate + ' % ');
+                $('#candidates_count')
+                    .html('共 <b style="color: #F7D354;">' + candidates.length + '</b> 位抽獎者 ，' +
+                        '抽出 <b style="color: #F7D354;">' + tmpCount + ' </b>位，' +
+                        '中奬率 <b style="color: #F7D354;">' + rate + ' %</b> ');
 
                 if (candidates.length < tmpCount) {
                     alert('名單少於獎項名額。');
@@ -113,8 +145,18 @@
                     winners.push(candidates.splice(0, 1));
                 }
 
+                let type = 'card';
+
+                if (winners.length == 1) {
+                    type = 'card1';
+                } else if (winners.length == 2) {
+                    type = 'card2';
+                } else if (winners.length == 3) {
+                    type = 'card3';
+                }
+
                 winners.forEach(function (name) {
-                    $('.name_list').append('    <div class="card">\n' +
+                    $('.name_list').append('    <div class="' + type.toString() + '">\n' +
                         '                    <div class="front">' + name + '</div>\n' +
                         '                </div>');
                 });
@@ -150,18 +192,13 @@
 
 <body>
 <svg id="app" viewBox="0 0 500 500">
-    <circle v-for="snowflake in snowflakes"
-            class="snowflake"
-            :cx="snowflake.cx"
-            :cy="snowflake.cy"
-            :r="snowflake.r"/>
+    <circle v-for="snowflake in snowflakes" class="snowflake" :cx="snowflake.cx" :cy="snowflake.cy" :r="snowflake.r"/>
 </svg>
 <div class="container title">
     <div class="row">
         <div class="col">
             <h3 class="display-5" style="text-align: center;color: #F7D354;font-weight: bold">臺北大學商學院</h3>
             <h1 class="display-3" style="text-align: center;color: #F7D354;font-weight: bold">聖誕奇蹟亮晶晶</h1>
-
         </div>
     </div>
 </div>
@@ -169,7 +206,7 @@
     <div class="row">
         <div id="content" class="col">
             <div class="left">
-                <label for="candidates" id="people">本次抽籤共</label>
+                <label for="candidates" id="people">本次抽奬共 人</label>
                 <textarea id="candidates" class="form-control" rows="12" placeholder="請貼上抽獎者姓名，以斷行分開"></textarea>
             </div>
             <div class="form-group">
@@ -183,14 +220,11 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12" id="results" style="display: none;">
-
             <div class="col">
-                <h2 id="candidates_count"></h2>
-                <h1>得獎名單：</h1>
+                <h3 class="display-5" style="text-align: center;color: #F7D354;font-weight: bold">得獎名單</h3>
+                <h5 id="candidates_count"></h5>
             </div>
-            <div class="col">
-                <div class="row name_list"></div>
-            </div>
+            <div class="row name_list"></div>
             <div class="col re-box">
                 <button id="restart" type="button" class="btn btn-warning">重新開始</button>
                 <button id="continue" class="btn btn-success">剩下的繼續抽籤</button>
@@ -199,11 +233,10 @@
         </div>
     </div>
 </div>
-
 <div class="container" style="padding-top: 80px;padding-bottom: 100px;">
     <div class="row">
         <div class="col" style="text-align: center;">
-                <span>The tool made by <a href="https://github.com/GraysonChiang" target="_blank">Grayson Chiang</a>. Source code on <a
+                <span>Made by <a href="https://github.com/GraysonChiang" target="_blank">Grayson Chiang</a>. Source code on <a
                         href="https://github.com/GraysonChiang/LuckyBacon" target="_blank">GitHub</a></span>
         </div>
     </div>
